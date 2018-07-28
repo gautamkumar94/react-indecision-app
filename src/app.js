@@ -1,12 +1,17 @@
 class IndecisionApp extends React.Component {
     render(){
+
+        const title = "Indecision";
+        const subtitle = "put your life in hands of computer";
+        const options = ["things one", "things two", "things three", "things four"];
+
         return(
 
             <div>
                 <h1>Title</h1>
-                <Header  title="Test Value"/>
+                <Header  title={title} subtitle={subtitle}/>
                 <Action/>
-                <Options/>
+                <Options  options = {options}/>
     
                 <AddOptions/>
             
@@ -22,7 +27,7 @@ class Header extends React.Component {
             
             <div>
                 <h1>{ this.props.title }</h1>
-                <h2>put your life in hands of computer</h2>
+                <h2>{  this.props.subtitle} </h2>
             </div>
         )
     }
@@ -39,13 +44,22 @@ class Action extends React.Component {
     }
 }
 
+
+// todo: render new p tag for each otion set (text and key)
 class Options extends React.Component {
-    render(){
+    render(){        
         return(
             <div>
                 Options component Here
 
-                <Option option="test option"/>
+                {
+                    // this.props.options.map((Option) => <p key={Option}> {Option} </p>)
+                            // or
+                        this.props.options.map((option)=>  <Option key={option} optionText={option}/>)
+                }
+                
+                <Option />
+
             
             </div>
         )
@@ -57,8 +71,8 @@ class Option extends React.Component {
         console.log(this.props)
         return(
             <div>
-                option component here
-                <h4>{this.props.option}</h4>
+                {this.props.optionText}
+                
             </div>
             
         )
