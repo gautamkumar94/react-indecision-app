@@ -1,3 +1,16 @@
+const obj = {
+    name : 'vikram',
+
+    getName(){
+       return this.name;
+    }
+};
+
+// console.log(obj.getName());
+
+const getName = obj.getName.bind(obj);
+// console.log(getName())
+
 class IndecisionApp extends React.Component {
     render(){
 
@@ -34,11 +47,19 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+    handlePick(){
+        alert('handlePick')
+    }
+
+   
     render(){
+        
         return(
             <div>
-            <button>What Should i do?</button>
-        </div>
+                <button  onClick ={this.handlePick}>What Should i do?</button>
+
+                
+            </div>
 
         ) 
     }
@@ -46,11 +67,20 @@ class Action extends React.Component {
 
 
 // todo: render new p tag for each otion set (text and key)
+// if we dont call super(props) we are not going to have the access to this.props. it is similar to inheritance 
 class Options extends React.Component {
+    constructor(props){
+        super(props) 
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+    handleRemoveAll(){
+        console.log(this.props.options)
+        // alert("remove all")
+    }
     render(){        
         return(
             <div>
-                Options component Here
+                <button onClick={this.handleRemoveAll} >Remove All </button>
 
                 {
                     // this.props.options.map((Option) => <p key={Option}> {Option} </p>)
@@ -80,10 +110,25 @@ class Option extends React.Component {
 }
 
 class AddOptions extends React.Component {
+    handleAddOption(e){
+        e.preventDefault();
+        const option = e.target.elements.OPTION.value.trim();
+
+        if (option){
+            alert(option)
+        }
+
+
+    }
     render(){
         return(
             <div>
                 Add options component here
+
+                <form onSubmit={this.handleAddOption}>
+                    <input type="text" name="OPTION"/>
+                    <button>Add Option</button>
+                </form>
             </div>
         )
     }
