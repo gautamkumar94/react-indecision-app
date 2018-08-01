@@ -17,9 +17,8 @@ class Counter extends React.Component{
                 count : previousState.count+1
             }
         }
-    )
-        
-    }
+    )}
+    
     handleMinusOne(){
         this.setState({
             count : 0
