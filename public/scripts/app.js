@@ -38,11 +38,14 @@ var Counter = function (_React$Component) {
     }, {
         key: 'handleMinusOne',
         value: function handleMinusOne() {
-            this.setState(function (previousState) {
-                return {
-                    count: previousState.count - 1
-                };
+            this.setState({
+                count: 0
             });
+            // this.setState((previousState)=>{
+            //     return{
+            //         count : previousState.count -1
+            //     }
+            // })
         }
     }, {
         key: 'handleReset',
