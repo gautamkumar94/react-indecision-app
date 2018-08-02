@@ -7,7 +7,7 @@ class Counter extends React.Component{
         this.handleReset = this.handleReset.bind(this)
 
         this.state = {
-            count : 0
+            count : props.count
         }
     }
 
@@ -18,16 +18,16 @@ class Counter extends React.Component{
             }
         }
     )}
-    
+
     handleMinusOne(){
-        this.setState({
-            count : 0
-        })
-        // this.setState((previousState)=>{
-        //     return{
-        //         count : previousState.count -1
-        //     }
+        // this.setState({
+        //     count : 0
         // })
+        this.setState((previousState)=>{
+            return{
+                count : previousState.count -1
+            }
+        })
     }
     handleReset(){
         this.setState((previousState)=>{
@@ -47,11 +47,14 @@ class Counter extends React.Component{
         )
     }
 }
+Counter.defaultProps = {
+    count : 0
+}
 
 // create three method :handleAddOne, handleMinusOne, handleReset
 
 
-ReactDOM.render(<Counter/>, document.getElementById('app'));
+ReactDOM.render(<Counter />, document.getElementById('app'));
 
 
 
