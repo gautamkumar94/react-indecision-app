@@ -7,8 +7,31 @@ class Counter extends React.Component{
         this.handleReset = this.handleReset.bind(this)
 
         this.state = {
-            count : props.count
+            count : 0
         }
+    }
+
+    componentDidMount(){
+        console.log("component did mount")
+
+        const stringCount = localStorage.getItem('count');
+        const count = parseInt(stringCount, 10)
+
+        if (!isNaN(count)){
+            this.setState(()=>({
+                count 
+            }))
+
+
+        }
+    }
+
+    componentDidUpdate(prevProps, previousState){
+        if(previousState.count = this.state.count){
+            localStorage.setItem('count', this.state.count)
+        }
+        console.log("component update")
+
     }
 
     handleAddOne(){
@@ -32,7 +55,7 @@ class Counter extends React.Component{
     handleReset(){
         this.setState((previousState)=>{
             return{
-                count : previousState.count - previousState.count
+                count : 0
             }
         })
     }
@@ -47,9 +70,9 @@ class Counter extends React.Component{
         )
     }
 }
-Counter.defaultProps = {
-    count : 0
-}
+// Counter.defaultProps = {
+//     count : 0
+// }
 
 // create three method :handleAddOne, handleMinusOne, handleReset
 
