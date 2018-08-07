@@ -23,5 +23,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const templat =React.createElement('p',{}, 'testing123')
+const templat =<p>This if from jsx</p>
 ReactDOM.render(templat, document.getElementById('app'))
